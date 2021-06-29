@@ -1,0 +1,5 @@
+/**/out*/**/*.pth
+/**/out*/**/events.out*
+/**/out*/**/*.png
+!/**/out*/**/lu-mwcnn-abtest.png
+/**/__pycache__

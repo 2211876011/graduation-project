@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CT图像深度学习超分辨率平台</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  </head>
+  <body>
+    <div class="banner">
+      <h1>CT图像深度学习超分辨率系统</h1>
+      <p>by SEU 09017227卓旭</p>
+    </div>
+
+    <div class="container">
+      <div class="left">
+        <div
+          id="image-display"
+          style="width: 512px; height: 512px"
+          oncontextmenu="return false"
+          onmousedown="return false"
+        ></div>
+      </div>
+
+      <div class="right">
+        <p class="right-title">控制面板</p>
+
+        <div class="section">
+          <p>
+            <img src="./assets/api.svg" />&nbsp;远端推理服务状态：<span id="remote-ip">N/A</span>&nbsp;<span
+              id="remote-status"
+              >N/A</span
+            >
+          </p>
+        </div>
+
+        <div class="section">
+          <img src="./assets/open.svg" />
+          <span>&nbsp;当前DICOM文件</span>
+          <input type="file" id="openDicom" accept=".dcm" />
+        </div>
+
+        <div class="section">
+          <img src="./assets/info.svg" />
+          <span>&nbsp;当前图像信息</span>
+          <br />
+          <ul id="info-display">
+            <li>文件名：<span id="info-filename">N/A</span></li>
+            <li>类型：<span id="info-type">N/A</span></li>
+            <li>高H：<span id="info-h">N/A</span></li>
+            <li>宽W：<span id="info-w">N/A</span></li>
+            <li>传输语义：<span id="info-transfer">N/A</span></li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <img src="./assets/microscope.svg" />
+          <span>&nbsp;功能操作区</span>
+          <br /><br />
+          <!-- WW/WL -->
+          <span>窗预设：</span>
+          <select name="presetWWWL" id="presetWWWL"></select>
+          &nbsp;/&nbsp;
+          <label>窗宽WW</label>
+          <input id="ww-input" type="number" value="256" />
+          &nbsp;/&nbsp;
+          <label>窗位WL</label>
+          <input id="wl-input" type="number" value="128" />
+          <button id="apply-btn" class="btn">应用</button>
+          <!-- zoom -->
+          <br /><br />
+          <span>当前放大倍率：</span><span id="current-zoom-rate">1.00</span><span>×</span>
+          <button id="zoomIn-btn" class="btn"><img src="./assets/zoom-in.svg" />放大</button>
+          <button id="zoomOut-btn" class="btn"><img src="./assets/zoom-out.svg" />缩小</button>
+          <!-- 其他 -->
+          <br /><br />
+          <button id="invert-btn" class="btn"><img src="./assets/reverse.svg" />反相</button>
+          <button id="reset-btn" class="btn"><img src="./assets/reset.svg" />重设</button>
+          <div id="sr-area">
+            <button id="sr-btn" class="btn"><img src="./assets/sr.svg" />超分辨率</button>
+            <div id="sr-loading">
+              <img src="./assets/loading.gif" />
+              <span>后台处理中…</span>
+            </div>
+            <div id="sr-done">
+              <span>√ 已完成</span>
+              <button id="sr-replace" class="btn">立即替换</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    window._ctsr = {}
+  </script>
+  <script src="./lib/cornerstone.js"></script>
+  <script src="./lib/cornerstoneMath.min.js"></script>
+  <script src="./lib/cornerstoneTools.min.js"></script>
+  <script src="./lib/dicomParser.min.js"></script>
+  <script src="./lib/cornerstoneWebImageLoader.js"></script>
+  <script src="./lib/cornerstoneWADOImageLoader.js"></script>
+  <script src="./lib/dicomTransferUids.js"></script>
+  <!-- <script src="/bundle.js"></script> <!-- dev -->
+  <script src="./bundle.js"></script> <!-- prod -->
+</html>

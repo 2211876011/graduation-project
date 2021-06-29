@@ -1,0 +1,5 @@
+/**/out*/**/*.pth
+# !**/out*/**/epoch_*99.pth
+!**/out*/**/tensorboard/*
+/**/out*/**/*.png
+/**/__pycache__/

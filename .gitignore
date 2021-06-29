@@ -1,0 +1,13 @@
+/**/__pycache__/
+/**/node_modules/
+/ignore/
+
+# cannot upload these according to NDA
+/paper/
+/outstanding/
+/nova/ablation/output_div2k/lu-mwcnn-abtest.png
+/experiment/calc-ct-lpips/out.json
+/experiment/curve-merge/cooked
+/experiment/curve-merge/raw-data
+/example_dicom/
+/archive/
